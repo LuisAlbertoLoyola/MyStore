@@ -12,8 +12,6 @@
             </h2>
           </div>
           <div class="is-pulled-right" style="display: inline-block;">
-            <!-- <label for="searchBox">Buscar </label>
-            <input type="text" id="searchBox" v-model="search"/> -->
             <div class="field">
               <p class="control has-icons-left">
                 <input class="input" type="text" placeholder="" v-model="search">
@@ -39,17 +37,8 @@
           <div class="card-content">
             <div class="content">
               <h3 class="title">{{ p.data.name }}</h3>
-              <p class="subtitle">$ {{ parseInt(p.data.price) }}</p>
-              <!-- <div class="has-spacing-bottom"> -->
-                <!-- <div class="has-spacing-bottom">
-                  <span class="tag is-medium">tortor</span>
-                  <span class="tag is-medium">suscipit</span>
-                  <span class="tag is-medium">Vivamus</span>
-                </div> -->
-              <!-- </div> -->
-              <!-- <p></p> -->
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis lorem ut libero malesuada feugiat. Donec rutrum congue leo eget malesuada. Donec rutrum congue leo eget malesuada.</p>
-              <!-- <p></p> -->
+              <p class="subtitle">$ {{ p.data.price * p.qty }}</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis lorem ut libero malesuada feugiat.</p>
               <div class="counter">
                 <button @click="decrQty(p.id)" :disabled="p.qty === 1"><i class="mdi mdi-minus"></i></button>
                 {{ p.qty }}

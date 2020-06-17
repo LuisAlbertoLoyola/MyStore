@@ -44,7 +44,7 @@
             <a class="navbar-link">
                 <span class="icon">
                   <i class="mdi mdi-32px mdi-account"></i>
-                </span> Hola {{ getCurrentUser ? getCurrentUser.email : '' }}
+                </span> Hi! {{ getCurrentUser ? getCurrentUser.email : '' }}
             </a>
 
             <div class="navbar-dropdown">

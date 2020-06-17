@@ -13,7 +13,7 @@ function getFromStorage(key) {
 function getCartTotal(productsList) {
   let price = 0.0
   productsList.forEach(p => {
-    price += p.price * p.qty
+    price += p.data.price * p.qty
   })
   return price
 }
@@ -33,14 +33,21 @@ export default new Vuex.Store({
     // Cart
     shoppingCart: getFromStorage('cart') || newCart(),
     showCart: false,
+    loading: false,
+    edit: false
   },
+
   mutations: {
     //reset mut
     LOADING_PRODUCTS(state){
       state.loading = !state.loading
     },
     GET_PRODUCTS(state, products){
-      state.products = products
+      state.products = []
+      products.forEach((prod) => {
+        prod['qty'] = 1
+        state.products.push(prod)
+      })
       state.loading = false
     },
     // User
@@ -85,7 +92,22 @@ export default new Vuex.Store({
       state.showCart = value
     },
   },
+
   actions: {
+   //show Products 
+    getProducts ({ commit }) {
+      // se carga la mutacion
+      commit('LOADING_PRODUCTS')
+      //CARGA O NO CARGA INFO
+      axios.get('https://us-central1-tgdd3-f199f.cloudfunctions.net/products/products',
+        { headers: { "Content-type": "text/plain" }
+        }).then((accept) => {
+        //variable auxiliar
+        let data = accept.data;
+        //llamar otra mutacion
+        commit('GET_PRODUCTS', data)
+        })
+    },
     // User
     updateUser ({commit}, user) {
       return new Promise((resolve, reject) => {
@@ -127,21 +149,10 @@ export default new Vuex.Store({
           resolve(true)
         } catch(e) { reject(e) }
       })
+    }  
   },
-  getProducts ({ commit }) {
-    // se carga la mutacion
-    commit('LOADING_PRODUCTS')
-    //CARGA O NO CARGA INFO
-    axios.get('https://us-central1-tgdd3-f199f.cloudfunctions.net/products/products',
-      { headers: { "Content-type": "text/plain" }
-      }).then((accept) => {
-      //variable auxiliar
-      let data = accept.data;
-      //llamar otra mutacion
-      commit('GET_PRODUCTS', data)
-      })
-    }
-  },
+
+
   getters: {
     // User
     isLoggedIn: state => !!state.currentUser,
