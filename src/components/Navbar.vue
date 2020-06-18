@@ -3,14 +3,15 @@
     <div class="container">
     <!-- Brand -->
     <div class="navbar-brand">
-      <router-link to="/" class="navbar-item">
+      <!-- <router-link to="/" class="navbar-item">
         {{ brand }}
-      </router-link>
-      <a role="button"
-      class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-      data-target="navbarMenu"
-      :class="{ 'is-active': displayMenu }"
-      @click="displayMenu = !displayMenu">
+      //</router-link> -->
+       <a class="navbar-item" to="/">
+        <img src="../assets/logo.png">
+       </a>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu"
+      :class="{ 'is-active': displayMenu }" @click="displayMenu = !displayMenu">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -123,6 +124,9 @@ export default {
 <style lang="scss" scoped>
 nav {
   height: 3.25rem;
-  //background-color: rgba(31, 202, 74, 0.219);
+}
+
+.navbar-item img {
+    max-height: 2.75rem;
 }
 </style>

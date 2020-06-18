@@ -80,10 +80,10 @@ export default {
           let user = this.credentials.email
           this.$store.dispatch('updateUser', user)
           this.$router.push('/')
+          alert(`Welcome ${this.credentials.email}`)
         })
         .catch(() => {
-          //console.log('Usuario no autenticado')
-          alert('Usuario no autenticado')
+          alert(`Wrong username or password`)
         })
       }
     }
@@ -97,6 +97,6 @@ export default {
 
 <style lang="scss" scoped>
 .login-container {
-  padding: 2rem 1rem 0.5rem 1rem;
+  padding: 2rem 2rem 2rem 2rem;
 }
 </style>

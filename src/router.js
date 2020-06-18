@@ -18,14 +18,14 @@ const router = new Router({
       path: '/create',
       name: 'create',
       component: Create,
+      meta: {
+        requireLogin: true
+      }
     },
     {
       path: '/home',
       name:'home',
       component: Home,
-      meta: {
-        requireLogin: true
-      }
     },
     {
       path: '/about',
@@ -48,7 +48,7 @@ router.beforeEach((to, from, next) => {
   let user = Firebase.auth().currentUser;
   let authRequired = to.matched.some(route => route.meta.requireLogin)
   if(!user && authRequired){
-    next('login')
+    next('home')
   }else {
     next()
   }

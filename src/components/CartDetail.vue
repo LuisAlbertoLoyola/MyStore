@@ -3,7 +3,7 @@
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">This are your products</p>
+        <p class="modal-card-title">Your products</p>
         <button class="delete" aria-label="close" @click="showModal=false"></button>
       </header>
       <section class="modal-card-body">
