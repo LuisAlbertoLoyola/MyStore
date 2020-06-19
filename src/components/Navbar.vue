@@ -3,12 +3,10 @@
     <div class="container">
     <!-- Brand -->
     <div class="navbar-brand">
-      <!-- <router-link to="/" class="navbar-item">
-        {{ brand }}
-      //</router-link> -->
-       <a class="navbar-item" to="/">
+      <router-link to="/" class="navbar-item">
         <img src="../assets/logo.png">
-       </a>
+      </router-link>
+       
 
       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu"
       :class="{ 'is-active': displayMenu }" @click="displayMenu = !displayMenu">

@@ -36,7 +36,7 @@
                         <!-- Submit Field-->
                         <div class="field">
                             <button type="submit" :class='{"is-disabled": !isAccepted}'
-                            @click='submitForm'>Registrar</button>
+                                @click='submitForm'>Registrar</button>
                         </div>
                         <div class="is-clearfix"></div>
                     </form>
