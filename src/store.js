@@ -47,7 +47,7 @@ export default new Vuex.Store({
   },
   //las mutations son funciones que modifican estados. Cumplen una funcion como los methos
   mutations: {
-    //Resetear Mutaciones, renderiza los productos
+    // Resetear Mutaciones, renderiza los productos
     LOADING_PRODUCTS(state){
       state.loading = !state.loading
     },

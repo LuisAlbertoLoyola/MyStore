@@ -17,7 +17,7 @@ const router = new Router({
     {
       path: '/create',
       name: 'create',
-      component: Create,
+      component: () => import("./components/Create.vue"),
       meta: {
         requireLogin: true  // El meta tiene relación con la función guardia (se representa con una respuesta booleana)
       }
@@ -57,7 +57,7 @@ router.beforeEach((to, from, next) => {
   let authRequired = to.matched.some(route => route.meta.requireLogin)
   if(!user && authRequired){
     next('home')
-  }else {
+  } else {
     next()
   }
 })
