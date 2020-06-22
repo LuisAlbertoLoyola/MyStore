@@ -19,7 +19,7 @@ const router = new Router({
       name: 'create',
       component: Create,
       meta: {
-        requireLogin: true
+        requireLogin: true  // El meta tiene relación con la función guardia (se representa con una respuesta booleana)
       }
     },
     {
@@ -47,6 +47,9 @@ const router = new Router({
       }
   ]
 })
+
+/* Guard que pide autenticación para entrar a lugares que no son públicos. Si no se está logeado, no tiene acceso a
+los sitios con privilegios de administrador o usuario */
 
 router.beforeEach((to, from, next) => {
   // to and from are both route objects. must call `next`.
