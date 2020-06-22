@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <div class="columns">
+  <div> 
+    <div class="columns" style="height: 70vh">
       <div class="column is-one-third"></div>
-      <div class="column is-one-third">
+      <div class="column is-one-third" id="container">
         <div class="login-container card">
           <form>
             <!-- Field email -->
@@ -99,4 +99,5 @@ export default {
 .login-container {
   padding: 2rem 2rem 2rem 2rem;
 }
+
 </style>

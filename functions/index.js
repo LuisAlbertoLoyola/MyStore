@@ -11,7 +11,15 @@ router.get("/product/:id", async (req, res) => {
     .firestore()
     .collection("productos")
     .doc(req.params.id)
-    .get();
+    .get().then((doc) => {
+      if (doc.exists) {
+        console.log('Document data', doc.data());
+        return doc.data();
+      } else {
+        console.log('No such document');
+        return {};
+      }
+    });
     res.send(product);
 });
 
@@ -28,7 +36,8 @@ router.get("/products", async (req, res) => {
 });
 
 router.post("/product", async (req, res) => {
-  const product = await admin
+  /* const product = await admin */
+    await admin
     .firestore()
     .collection("productos")
     .add(req.body);

@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+     <!-- Header de la Pagina -->
     <section class="hero is-dark is-bold">
       <div class="hero-body">
         <div class="container">
@@ -8,7 +9,7 @@
               Our Products
             </h1>
             <h2 class="subtitle">
-              new collection
+              New Collection
             </h2>
           </div>
           <div class="is-pulled-right" style="display: inline-block;">
@@ -20,16 +21,17 @@
                 </span>
               </p>
             </div>
-            <!--  -->
           </div>
         </div>
       </div>
     </section>
+    <!-- Cards con Prdocutos -->
     <div class="columns is-multiline">
       <div class="column is-4" v-for="p in computedProductList" :key="p.id">
         <!-- Item -->
         <div class="card has-equal-height">
           <div class="image-card">
+            <!-- Imagen del producto -->
             <div class="image has-spacing image is-16by16">
               <img alt="product logo" :src="p.data.picture">
             </div>
@@ -38,12 +40,15 @@
             <div class="content">
               <h3 class="title">{{ p.data.name }}</h3>
               <p class="subtitle">$ {{ p.data.price * p.qty }}</p>
+              <!-- Descripcion del producto -->
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis lorem ut libero malesuada feugiat.</p>
+              <!-- Agrega y Quitar unidades del producto -->
               <div class="counter">
                 <button @click="decrQty(p.id)" :disabled="p.qty === 1"><i class="mdi mdi-minus"></i></button>
                 {{ p.qty }}
                 <button @click="incrQty(p.id)"><i class="mdi mdi-plus"></i></button>
               </div>
+               <!-- Boton para agregar al Carrito -->
               <button @click="addToCart(p)" class="button is-pulled-right is-warning">
                 <i class="mdi mdi-cart"></i>
               </button>
@@ -60,7 +65,7 @@
 
 <script>
 
-import {mapState} from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
   components: {},
@@ -71,10 +76,12 @@ export default {
     }
   },
   methods: {
+    // Metodo de Incremento
     incrQty(id) {
       let idx = this.products.map(p => p.id).indexOf(id)
       this.products[idx].qty++
     },
+    // Metodo de Disminucion
     decrQty(id) {
       let idx = this.products.map(p => p.id).indexOf(id)
       // console.log('decr on ', this.products[idx])
@@ -82,11 +89,12 @@ export default {
         this.products[idx].qty--
       }
     },
+    // Agregar producto al carrito
     addToCart(product) {
       // push a copy of product to the cart
       let p = JSON.parse(JSON.stringify(product))
       this.$store.dispatch('addToCart', p)
-      // reset qty
+      // Reset qty
       product.qty = 1
     }
   },
@@ -99,10 +107,13 @@ export default {
       })
     }
   },
+  //
   watch: {},
+  //
   created() {
     this.$store.dispatch('getProducts')
   },
+  //
   mounted() {}
 }
 </script>
