@@ -2,7 +2,7 @@
 
 ## Project Description
 
-MyStore is a streetwear e-commerce. Its functionality is based on Javascript Framework **Vue.js**, along with compatible components of this framework such as **Vue Router, VUEXTesting E2E, Firebase and CSS style framework Bulma.**
+MyStore is a streetwear e-commerce. Its functionality is based on Javascript Framework **Vue.js**, along with compatible complements of this framework such as **Vue Router, VUEXTesting E2E, Firebase and CSS style framework Bulma.**
 
 To see more of my work, please visit my GitHub Page https://github.com/LuisAlbertoLoyola
 
