@@ -87,6 +87,8 @@ Base de Datos de Firebase, como el mapState / mapActions de Vuex (store.js) */
   import axios from 'axios' // Si las acciones son llamadas en store.js, este llamado no es necesario (en ese caso se llama en el mapActions en methods)
   import { mapState, mapActions } from 'vuex'
 
+  const baseUrl = 'https://us-central1-tgdd3-f199f.cloudfunctions.net/products'
+
   export default {
     // Esta sección muestra que los campos del formulario están vacíos
     data() {
@@ -95,6 +97,7 @@ Base de Datos de Firebase, como el mapState / mapActions de Vuex (store.js) */
         picture: '',
         price: '',
         id: undefined,
+        formHasErrors: false
       }
     },
     //
@@ -119,8 +122,8 @@ Base de Datos de Firebase, como el mapState / mapActions de Vuex (store.js) */
       }
       if (!this.formHasErrors) {
         console.log(result)
-        axios.post('https://us-central1-tgdd3-f199f.cloudfunctions.net/products/product', result, 
-        {headers:{'content-type':'application/json'}})
+        axios.post(`${baseUrl}/product`, result, 
+        { headers:{ 'content-type':'application/json' }})
         .then((response) => {
           console.log(response);
           this.name = ''
@@ -140,7 +143,7 @@ Base de Datos de Firebase, como el mapState / mapActions de Vuex (store.js) */
       deleteProduct(id){
         let confirmation = confirm('Are you sure you want to delete this product?')
         if (confirmation){
-            axios.delete(`https://us-central1-tgdd3-f199f.cloudfunctions.net/products/product/${id}`, 
+            axios.delete(`${baseUrl}/product/${id}`, 
             { headers: {'content-type': 'application/json' }})
             .then(() => {
               alert('Product Deleted')
@@ -156,8 +159,8 @@ Base de Datos de Firebase, como el mapState / mapActions de Vuex (store.js) */
      // Acción para traer productos
      // El método GET se envía una petición cuyo objetivo es traer información
       findProduct(id){
-        axios.get(`https://us-central1-tgdd3-f199f.cloudfunctions.net/products/product/${id}`, 
-        { headers:{'content-type':'aplication/json'}})
+        axios.get(`${baseUrl}/product/${id}`, 
+        { headers:{'content-type':'aplication/json' }})
         .then((response)=>{
           this.name = response.data.name
           this.picture = response.data.picture
@@ -173,7 +176,7 @@ Base de Datos de Firebase, como el mapState / mapActions de Vuex (store.js) */
           picture: this.picture,
           price: this.price
         }
-        axios.put(`https://us-central1-tgdd3-f199f.cloudfunctions.net/products/product/${id}`, result, 
+        axios.put(`${baseUrl}/product/${id}`, result, 
         { headers: { 'content-type': 'application/json' }})
           .then(() => {
             this.name = ''

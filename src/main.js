@@ -12,10 +12,6 @@ Vue.config.productionTip = false
 // Main Styles
 import './assets/scss/main.scss'
 
-// Material Icons
-// import 'material-icons/iconfont/material-icons.css'
-// import '@mdi/font/css/materialdesignicons.css'
-
 let app= ''
 Firebase.auth().onAuthStateChanged(() => {
   if(!app){
@@ -27,10 +23,3 @@ Firebase.auth().onAuthStateChanged(() => {
     }).$mount('#app')
   }
 })
-
-
-//new Vue({
-  //router,
-  //store,
-  //render: h => h(App)
-//}).$mount('#app')

@@ -2,7 +2,7 @@
 <div>
   <footer class="footer">
   <div class="content has-text-centered">
-    <p><b>MyStore®</b>Todos los derechos reservados</p>
+    <p><b>MyStore®</b> Todos los derechos reservados</p>
   </div>
  </footer>
 </div>

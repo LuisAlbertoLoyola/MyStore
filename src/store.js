@@ -29,6 +29,8 @@ function newCart() { // limpia el carrito
   }
 }
 
+const baseUrl = 'https://us-central1-tgdd3-f199f.cloudfunctions.net/products'
+
 export default new Vuex.Store({
   // los state son la fuente de datos de los componentes
   state: {
@@ -164,8 +166,8 @@ export default new Vuex.Store({
       // Se carga la mutacion
       commit ('SET_LOADING')
       commit('LOADING_PRODUCTS')
-      // Carga o no carga la ingo
-      axios.get('https://us-central1-tgdd3-f199f.cloudfunctions.net/products/products',
+      // Carga o no carga la info
+      axios.get(`${baseUrl}/products`,
         { headers: { "Content-type": "text/plain" }
         }).then((accept) => {
         // variable auxiliar

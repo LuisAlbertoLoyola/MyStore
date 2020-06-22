@@ -17,7 +17,7 @@ router.get("/product/:id", async (req, res) => {
         return doc.data();
       } else {
         console.log('No such document');
-        return {};
+        return {}
       }
     });
     res.send(product);
